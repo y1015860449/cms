@@ -31,10 +31,6 @@ redis:
 trace:
   addr: "jaeger:6831"
 
-token:
-  expiredsec: 10000     # 超时时间
-  safetysec: 10000      # 安全时间
-
 # micro注册到注册中心的配置
 micro:
   registerTTL: 3 # 超时时间(秒)

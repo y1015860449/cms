@@ -1,0 +1,55 @@
+// protoc --proto_path=. --micro_out=. --go_out=. *.proto
+
+syntax = "proto3";
+
+package cms.user;
+option go_package = "./cms.user";
+
+message RegisterReq {
+  string account = 1;
+}
+
+message RegisterRsp {
+  string account = 1;
+  int64 userId = 2;
+  string loginToken = 3;
+  int32 svcErr = 4;
+}
+
+message LoginReq {
+  string account = 1;
+}
+
+message LoginRsp {
+  string account = 1;
+  int64 userId = 2;
+  string loginToken = 3;
+  int32 svcErr = 4;
+}
+
+message LogoutReq {
+  int64 userId = 1;
+  string loginToken = 3;
+}
+
+message LogoutRsp {
+  int64 userId = 1;
+  int32 svcErr = 2;
+}
+
+message CheckTokenReq {
+  int64 userId = 1;
+  string loginToken = 2;
+}
+
+message CheckTokenRsp {
+  int64 userId = 1;
+  int32 TokenStatus = 2;
+  int32 svcErr = 3;
+}
+
+service CmsUser {
+  rpc Register(RegisterReq) returns (RegisterRsp);  // 注册
+  rpc Login(LoginReq) returns (LoginRsp);   // 登录
+  rpc Logout(LogoutReq) returns (LogoutRsp);    // 登出
+}

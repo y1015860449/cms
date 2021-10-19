@@ -12,7 +12,6 @@ type Config struct {
 	Redis   Redis `yaml:"redis"`
 	Release bool  `yaml:"release"`
 	Trace   Trace `yaml:"trace"`
-	Token   Token `yaml:"token"`
 	Micro   Micro `yaml:"micro"`
 }
 
@@ -48,11 +47,6 @@ type Etcd struct {
 
 type Kafka struct {
 	Addrs []string `yaml:"addrs"`
-}
-
-type Token struct {
-	ExpiredSec int `yaml:"expiredsec"`
-	SafetySec  int `yaml:"safetysec"`
 }
 
 func NewConfig(configFile string) (*Config, error) {
